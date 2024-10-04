@@ -33,31 +33,11 @@ export const createTodo = async (newTodo, userId) => {
 
 export const updateTodo = async (userId, todoId, updateTodo) => {
   logger.info(`Updating todo ${todoId} for user ${userId}`)
-  const item = await todosAccess.getTodoItem(todoId)
-
-  if (!item)
-    throw new Error('Item not found')
-
-  if (item.userId !== userId) {
-    logger.error(`User ${userId} does not have permission to update todo ${todoId}`)
-    throw new Error('User is not authorized to update item')
-  }
-
   return await todosAccess.update(userId, todoId, updateTodo)
 }
 
 export const deleteTodo = async (userId, todoId) => {
   logger.info(`Deleting todo with ID: ${todoId} for user with ID: ${userId}`)
-  const item = await todosAccess.getTodoItem(todoId)
-
-  if (!item)
-    throw new Error('Item not found')
-
-  if (item.userId !== userId) {
-    logger.error(`User ${userId} does not have permission to delete todo ${todoId}`)
-    throw new Error('User is not authorized to delete item')
-  }
-
   return await todosAccess.delete(userId, todoId)
 }
 

@@ -4,7 +4,7 @@ import { JwksClient } from 'jwks-rsa'
 
 const logger = createLogger('auth')
 
-const jwksUrl = 'https://test-endpoint.auth0.com/.well-known/jwks.json'
+const jwksUrl = 'https://dev-w5x0roc81tzbjmee.us.auth0.com/.well-known/jwks.json'
 
 const jwks = new JwksClient({ jwksUri: jwksUrl })
 
